@@ -4,6 +4,8 @@ import './App.css';
 import Display from './display/Display';
 import Dashboard from './dashboard/Dashboard';
 
+import { strikeCounter } from './dashboard/dashboard-helpers';
+
 class App extends Component {
   state = {
     balls: 0,
@@ -11,15 +13,9 @@ class App extends Component {
   }
 
   countStrike = () => {
-    let updatedStrikes = this.state.strikes;
-    updatedStrikes ++;
-    if(updatedStrikes > 3) {
-      updatedStrikes = 0;
-    }
-    this.setState({
-      ...this.state,
-      strikes: updatedStrikes
-    });
+    const updatedState = strikeCounter(this.state);
+
+    this.setState(updatedState);
   };
 
   render() {
