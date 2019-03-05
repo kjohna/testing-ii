@@ -4,12 +4,13 @@ import './App.css';
 import Display from './display/Display';
 import Dashboard from './dashboard/Dashboard';
 
-import { strikeCounter, ballCounter } from './dashboard/dashboard-helpers';
+import { strikeCounter, ballCounter, recordHit } from './dashboard/dashboard-helpers';
 
 class App extends Component {
   state = {
     balls: 0,
     strikes: 0,
+    hit: false,
   }
 
   countStrike = () => {
@@ -24,11 +25,18 @@ class App extends Component {
     this.setState(updatedState);
   };
 
+  countHit = () => {
+    const updatedState = recordHit(this.state);
+
+    this.setState(updatedState);
+  }
+
   render() {
     return (
       <div className="App">
         <Display balls={this.state.balls} strikes = {this.state.strikes} />
-        <Dashboard countStrike={this.countStrike} countBall={this.countBall} />
+        <Dashboard countStrike={this.countStrike} countBall={this.countBall} countHit={this.countHit} />
+        <div data-testid="hit-display">{this.state.hit && "Hit!"}</div>
       </div>
     );
   }

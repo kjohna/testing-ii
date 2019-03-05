@@ -28,3 +28,11 @@ export function ballCounter(state) {
   }
 }
 
+export function recordHit(state) {
+  return {
+    ...state,
+    balls: 0,
+    strikes: 0,
+    hit: true,
+  }
+}

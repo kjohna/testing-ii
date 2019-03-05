@@ -6,6 +6,7 @@ function Dashboard(props) {
       <h3>Dashboard</h3>
       <button onClick={props.countStrike}>Count Strike</button>
       <button onClick={props.countBall}>Count Ball</button>
+      <button onClick={props.countHit}>Count Hit</button>
     </div>
   );
 }

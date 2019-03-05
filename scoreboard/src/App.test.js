@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from 'react-testing-library';
+import 'jest-dom/extend-expect';
 
 import App from './App';
 
@@ -29,4 +30,15 @@ describe('<App />', () => {
     
     expect(ballDisplay.textContent).toBe("1");  // ball count is initialized at 0 in App's state
   });
+
+  it('records hit', () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    const recordHitButton = getByText(/count hit/i);
+
+    fireEvent.click(recordHitButton);
+
+    expect(getByText(/Hit!/i)).toBeInTheDocument();
+
+  })
 });

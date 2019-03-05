@@ -1,4 +1,8 @@
-const { strikeCounter, ballCounter } = require('./dashboard-helpers.js');
+const { 
+  strikeCounter, 
+  ballCounter,
+  recordHit 
+} = require('./dashboard-helpers.js');
 
 describe('dashboard-helpers.js', () => {
   describe('countStrike()', () => {
@@ -44,4 +48,20 @@ describe('dashboard-helpers.js', () => {
       expect(ballCounter(startState)).toEqual(finalState);
     })
   });
+
+  describe('recordHit()', () => {
+    it('should reset balls and strikes when hit is recorded', () => {
+      const startState = {
+        balls: 3,
+        strikes: 2,
+        hit: false,
+      }
+      const finalState = {
+        balls: 0,
+        strikes: 0,
+        hit: true,
+      }
+      expect(recordHit(startState)).toEqual(finalState);
+    })
+  })
 });
