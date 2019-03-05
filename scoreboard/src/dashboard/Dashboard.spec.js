@@ -19,5 +19,13 @@ describe('<Dashboard />', () => {
     const text = getByText(/count strike/i);
 
     expect(text).toBeInTheDocument();
-  })
+  });
+
+  it('should display "Count Ball" button', () => {
+    const { getByText } = render(<Dashboard />);
+
+    const text = getByText(/count ball/i);
+
+    expect(text).toBeInTheDocument();
+  });
 });

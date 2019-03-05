@@ -18,4 +18,15 @@ describe('<App />', () => {
     
     expect(strikeDisplay.textContent).toBe("1");  // strike count is initialized at 0 in App's state
   });
+
+  it('counts balls', () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    const countBallButton = getByText(/count ball/i);
+    const ballDisplay = getByTestId('balls-display');
+
+    fireEvent.click(countBallButton);
+    
+    expect(ballDisplay.textContent).toBe("1");  // ball count is initialized at 0 in App's state
+  });
 });

@@ -21,5 +21,27 @@ describe('dashboard-helpers.js', () => {
       }
       expect(strikeCounter(startState)).toEqual(finalState);
     })
-  })
+  });
+
+  describe('countBall()', () => {
+    it('should increment ball count', () => {
+      const state = {
+        balls: 0,
+        strikes: 0,
+      }
+      expect(ballCounter(state).balls).toBe(1);
+    })
+
+    it('should reset balls and strikes when balls reaches 4', () => {
+      const startState = {
+        balls: 3,
+        strikes: 2,
+      }
+      const finalState = {
+        balls: 0,
+        strikes: 0,
+      }
+      expect(ballCounter(startState)).toEqual(finalState);
+    })
+  });
 });
