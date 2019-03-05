@@ -13,10 +13,10 @@ describe('<Dashboard />', () => {
     expect(text).toBeInTheDocument();
   });
 
-  it('should display strike button', () => {
+  it('should display "Count Strike" button', () => {
     const { getByText } = render(<Dashboard />);
 
-    const text = getByText(/strike/i);
+    const text = getByText(/count strike/i);
 
     expect(text).toBeInTheDocument();
   })
