@@ -1,7 +1,8 @@
 const { 
   strikeCounter, 
   ballCounter,
-  recordHit 
+  recordHit,
+  recordFoul,
 } = require('./dashboard-helpers.js');
 
 describe('dashboard-helpers.js', () => {
@@ -97,5 +98,35 @@ describe('dashboard-helpers.js', () => {
       }
       expect(recordHit(startState)).toEqual(finalState);
     })
-  })
+  });
+
+  describe('recordFoul()', () => {
+    it('should increase strikes by 1', () => {
+      const startState = {
+        balls: 0,
+        strikes: 0,
+        hit: false,
+      }
+      const finalState = {
+        balls: 0,
+        strikes: 1,
+        hit: false,
+      }
+      expect(recordFoul(startState)).toEqual(finalState);
+    });
+
+    it('should not increase strikes beyond 2', () => {
+      const startState = {
+        balls: 0,
+        strikes: 2,
+        hit: false,
+      }
+      const finalState = {
+        balls: 0,
+        strikes: 2,
+        hit: false,
+      }
+      expect(recordFoul(startState)).toEqual(finalState);
+    })
+  });
 });

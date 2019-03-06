@@ -38,3 +38,12 @@ export function recordHit(state) {
     hit: true,
   }
 }
+
+export function recordFoul(state) {
+  let newStrikes = state.strikes;
+  newStrikes < 2 && newStrikes ++;
+  return {
+    ...state,
+    strikes: newStrikes,
+  }
+}
