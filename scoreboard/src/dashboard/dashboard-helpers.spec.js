@@ -5,6 +5,13 @@ const {
   recordFoul,
 } = require('./dashboard-helpers.js');
 
+const baseState = {
+  balls: 0,
+  strikes: 0,
+  hit: false,
+  foul: false,
+}
+
 describe('dashboard-helpers.js', () => {
   describe('countStrike()', () => {
     it('should increment strike count', () => {
@@ -97,10 +104,23 @@ describe('dashboard-helpers.js', () => {
         hit: true,
       }
       expect(recordHit(startState)).toEqual(finalState);
-    })
+    });
   });
 
   describe('recordFoul()', () => {
+    it('should set foul state to true', () => {
+      const startState = {
+        ...baseState,
+        foul: false,
+      }
+      const finalState = {
+        ...baseState,
+        foul: true,
+        strikes: 1, // will increment strikes as well
+      }
+      expect(recordFoul(startState)).toEqual(finalState);
+    });
+
     it('should increase strikes by 1', () => {
       const startState = {
         balls: 0,
@@ -111,6 +131,7 @@ describe('dashboard-helpers.js', () => {
         balls: 0,
         strikes: 1,
         hit: false,
+        foul: true,
       }
       expect(recordFoul(startState)).toEqual(finalState);
     });
@@ -120,11 +141,13 @@ describe('dashboard-helpers.js', () => {
         balls: 0,
         strikes: 2,
         hit: false,
+        foul: false,
       }
       const finalState = {
         balls: 0,
         strikes: 2,
         hit: false,
+        foul: true,
       }
       expect(recordFoul(startState)).toEqual(finalState);
     })

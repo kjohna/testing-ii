@@ -40,5 +40,16 @@ describe('<App />', () => {
 
     expect(getByText(/Hit!/i)).toBeInTheDocument();
 
-  })
+  });
+
+  it('records foul', () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    const recordFoulButton = getByText(/count foul/i);
+
+    fireEvent.click(recordFoulButton);
+
+    expect(getByText(/Foul!/i)).toBeInTheDocument();
+
+  });
 });

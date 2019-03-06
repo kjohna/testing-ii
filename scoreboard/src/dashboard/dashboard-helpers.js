@@ -45,5 +45,6 @@ export function recordFoul(state) {
   return {
     ...state,
     strikes: newStrikes,
+    foul: true,
   }
 }

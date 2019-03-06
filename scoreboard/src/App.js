@@ -11,6 +11,7 @@ class App extends Component {
     balls: 0,
     strikes: 0,
     hit: false,
+    foul: false,
   }
 
   countStrike = () => {
@@ -48,6 +49,7 @@ class App extends Component {
           countFoul={this.countFoul}
         />
         <div data-testid="hit-display">{this.state.hit && "Hit!"}</div>
+        <div data-testid="foul-display">{this.state.foul && "Foul!"}</div>
       </div>
     );
   }
