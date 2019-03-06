@@ -11,6 +11,7 @@ export function strikeCounter(state) {
     strikes: updatedStrikes,
     balls: updatedBalls,
     hit: false,
+    foul: false,
   }
 }
 
@@ -27,6 +28,7 @@ export function ballCounter(state) {
     strikes: updatedStrikes,
     balls: updatedBalls,
     hit: false,
+    foul: false,
   }
 }
 
@@ -36,6 +38,7 @@ export function recordHit(state) {
     balls: 0,
     strikes: 0,
     hit: true,
+    foul: false,
   }
 }
 
@@ -46,5 +49,6 @@ export function recordFoul(state) {
     ...state,
     strikes: newStrikes,
     foul: true,
+    hit: false,
   }
 }

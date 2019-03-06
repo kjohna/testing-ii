@@ -6,7 +6,7 @@ const {
 } = require('./dashboard-helpers.js');
 
 describe('dashboard-helpers.js', () => {
-  describe('countStrike()', () => {
+  describe('strikeCounter()', () => {
     it('should increment strike count', () => {
       const state = {
         strikes: 0
@@ -36,9 +36,19 @@ describe('dashboard-helpers.js', () => {
       }
       expect(strikeCounter(startState)).toEqual(expect.objectContaining(finalState));
     });
+
+    it('should reset foul to false', () => {
+      const startState = {
+        foul: true,
+      }
+      const finalState = {
+        foul: false,
+      }
+      expect(strikeCounter(startState)).toEqual(expect.objectContaining(finalState));
+    });
   });
 
-  describe('countBall()', () => {
+  describe('ballCounter()', () => {
     it('should increment ball count', () => {
       const state = {
         balls: 0,
@@ -67,6 +77,16 @@ describe('dashboard-helpers.js', () => {
       }
       expect(ballCounter(startState)).toEqual(expect.objectContaining(finalState));
     });
+
+    it('should reset foul to false', () => {
+      const startState = {
+        foul: true,
+      }
+      const finalState = {
+        foul: false,
+      }
+      expect(ballCounter(startState)).toEqual(expect.objectContaining(finalState));
+    });
   });
 
   describe('recordHit()', () => {
@@ -78,6 +98,16 @@ describe('dashboard-helpers.js', () => {
       const finalState = {
         balls: 0,
         strikes: 0,
+      }
+      expect(recordHit(startState)).toEqual(expect.objectContaining(finalState));
+    });
+
+    it('should reset foul to false', () => {
+      const startState = {
+        foul: true,
+      }
+      const finalState = {
+        foul: false,
       }
       expect(recordHit(startState)).toEqual(expect.objectContaining(finalState));
     });
@@ -117,5 +147,15 @@ describe('dashboard-helpers.js', () => {
       }
       expect(recordFoul(startState)).toEqual(expect.objectContaining(finalState));
     })
+
+    it('should reset hit to false', () => {
+      const startState = {
+        hit: true,
+      }
+      const finalState = {
+        hit: false,
+      }
+      expect(recordFoul(startState)).toEqual(expect.objectContaining(finalState));
+    });
   });
 });
