@@ -28,4 +28,20 @@ describe('<Dashboard />', () => {
 
     expect(text).toBeInTheDocument();
   });
+
+  it('should display "Count Hit" button', () => {
+    const { getByText } = render(<Dashboard />);
+
+    const text = getByText(/count hit/i);
+
+    expect(text).toBeInTheDocument();
+  });
+
+  it('should display "Count Foul" button', () => {
+    const { getByText } = render(<Dashboard />);
+
+    const text = getByText(/count foul/i);
+
+    expect(text).toBeInTheDocument();
+  });
 });
