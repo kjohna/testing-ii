@@ -9,7 +9,8 @@ export function strikeCounter(state) {
   return {
     ...state,
     strikes: updatedStrikes,
-    balls: updatedBalls
+    balls: updatedBalls,
+    hit: false,
   }
 }
 
@@ -24,7 +25,8 @@ export function ballCounter(state) {
   return {
     ...state,
     strikes: updatedStrikes,
-    balls: updatedBalls
+    balls: updatedBalls,
+    hit: false,
   }
 }
 
